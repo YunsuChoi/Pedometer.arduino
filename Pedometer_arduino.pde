@@ -42,28 +42,33 @@ void loop()
   } 
   delay(100);
 
-
   if (acc.isConnected()) { // working codes are MUST in this {} site.
     int len = acc.read(msg, sizeof(msg), 1);
-
-    printer.begin();
-
-    delay(3000);
-    printer.printBitmap(66, 171, start);  // Image 1(start.ccp) print
-    delay(3000);
-
-    printer.print("simple words\n");  // Text output
-    //delay(3000);
-
-    delay(3000);
-    printer.printBitmap(66, 191, ends);  // Image 2(end.ccp) print
-    delay(3000);
-    delay(1);
-
-    printer.sleep(); //Tell printer to sleep. MUST call wake before printing again, even if reset
-    printer.wake(); //Wake printer.
-
-    printer.setDefault(); //set printer to defaults. ****WILL FEED SEVERAL LINES WHEN CALLED***
+if (len>0){
+  if (msg[0] == 0x3){
+        if (msg[1] == 0x0) { //when button pressed in Android.
+          acc.write(msg, 3); // send message to SerialMonitor
+          printer.begin();
+      
+          delay(3000);
+          printer.printBitmap(66, 171, start);  // Image 1(start.ccp) print
+          delay(3000);
+      
+          printer.print("simple words\n");  // Text output
+          //delay(3000);
+      
+          delay(3000);
+          printer.printBitmap(66, 191, ends);  // Image 2(end.ccp) print
+          delay(3000);
+          delay(1);
+      
+          printer.sleep(); //Tell printer to sleep. MUST call wake before printing again, even if reset
+          printer.wake(); //Wake printer.
+      
+          printer.setDefault(); //set printer to defaults. ****WILL FEED SEVERAL LINES WHEN CALLED***
+          }
+      }
+  }
   }
 }
 
