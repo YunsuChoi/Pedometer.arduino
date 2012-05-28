@@ -48,7 +48,7 @@ void loop()
     if (len>0){
       if (msg[0] == 0x1){ // recognize first element from Android.
           if (msg[1] == 0x0) { //when button pressed in Android.
-            acc.write(msg, 1); // send message to SerialMonitor
+            acc.write(msg, 3); // send message to SerialMonitor
             printer.begin();
            
             delay(3000);
@@ -68,16 +68,20 @@ void loop()
           }
           
           else if(msg[1] == 0x1){
-            acc.write(msg, 2);
-            printer.begin();
-           
-            delay(3000);        
+            int msg[2];
+            
+            printer.begin();   
+
+            delay(3000);
             printer.print(msg[2]);  // Text output
             delay(3000);
-        
+            printer.print(" steps!\n");  // Text output            
+            
             printer.sleep(); //Tell printer to sleep. MUST call wake before printing again, even if reset
             printer.wake(); //Wake printer.
             printer.setDefault(); //set printer to defaults. ****WILL FEED SEVERAL LINES WHEN CALLED***
+
+            acc.write(msg, 3);
           }
       }
   }
