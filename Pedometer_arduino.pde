@@ -65,17 +65,15 @@ void loop()
             printer.sleep(); //Tell printer to sleep. MUST call wake before printing again, even if reset
             printer.wake(); //Wake printer.
             printer.setDefault(); //set printer to defaults. ****WILL FEED SEVERAL LINES WHEN CALLED***
-          }
-          
-          else if(msg[1] == 0x1){
+          } else if(msg[1] == 0x1){
             int msg[2];
             
             printer.begin();   
-
+                        
             delay(3000);
             printer.print(msg[2]);  // Text output
             delay(3000);
-            printer.print(" steps!\n");  // Text output            
+            printer.print(" Steps!\n");  // Text output            
             
             printer.sleep(); //Tell printer to sleep. MUST call wake before printing again, even if reset
             printer.wake(); //Wake printer.
