@@ -12,10 +12,10 @@
 #include "ends.cpp"
 
 AndroidAccessory acc("Yunsu Choi",
-"Air Purifier",
-"DemoKit Arduino Board",
+"Pedometer",
+"Pedometer Printing Board",
 "1.0",
-"http://www.android.com",
+"https://github.com/YunsuChoi/Pedometer.arduino",
 "0000000012345678");
 
 int printer_RX_Pin = 2;  // this is the green wire
