@@ -15,7 +15,7 @@ AndroidAccessory acc("Yunsu Choi",
 "Pedometer",
 "Pedometer Printing Board",
 "1.0",
-"https://github.com/YunsuChoi/Pedometer.arduino",
+"http://github.com/YunsuChoi",
 "0000000012345678");
 
 int printer_RX_Pin = 2;  // this is the green wire
@@ -66,12 +66,12 @@ void loop()
             printer.wake(); //Wake printer.
             printer.setDefault(); //set printer to defaults. ****WILL FEED SEVERAL LINES WHEN CALLED***
           } else if(msg[1] == 0x1){
-            int msg[2];
+            int print_msg = (int) msg[2];
+            // sotre value another space. bringing msg[2] by type change into int.
             
             printer.begin();   
                         
-            delay(3000);
-            printer.print(msg[2]);  // Text output
+            printer.print(print_msg);  // Text output
             delay(3000);
             printer.print(" Steps!\n");  // Text output            
             
