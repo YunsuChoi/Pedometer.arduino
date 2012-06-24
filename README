@@ -1,8 +1,0 @@
-Arduino Module for ADK Pedometer project
-
-
- = Release Note = 
-
-2012-04-23 / printing bitmap image possible as big as 250*250, also short texts.(Milestone 1)
-
-2012-05-14 / implement ADK identification code
